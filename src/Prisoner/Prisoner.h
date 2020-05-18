@@ -13,11 +13,9 @@ private:
     int age;
     int destination;
     int location;
-};
-
-Prisoner::Prisoner(int nif, const string &name, int age, int destination, int location){
-    
 }
+
+
 
 
 #endif //SRC_PRISONER_H
