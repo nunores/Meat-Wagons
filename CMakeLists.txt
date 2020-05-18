@@ -4,6 +4,7 @@ project(Meat_Wagons)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(src/DataStructure)
+include_directories(src/graphviewer)
 include_directories(src/Menu)
 include_directories(src/Prisoner)
 

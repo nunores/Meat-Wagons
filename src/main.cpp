@@ -1,8 +1,23 @@
 #include "Menu/menu.h"
-#include <iostream>
 using namespace std;
 
 int main() {
-    showMainMenu();
+
+    int option = 0;
+    option = showMainMenu();
+    switch (option) {
+        case 0:
+            break;
+        case 1:
+            //
+            break;
+        case 2:
+            //
+            break;
+        case 3:
+            //
+            break;
+    }
+
     return 0;
 }
