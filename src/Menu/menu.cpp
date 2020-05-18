@@ -27,11 +27,11 @@ int choseOption(int options)
             }
         }
         if (error) {
-            cout << "Input inválido" << endl;
+            cout << "Input invalido" << endl;
         } else {
             if (stoi(option) > options || stoi(option) < 0) {
                 error = true;
-                cout << "Input inválido" << endl;
+                cout << "Input invalido" << endl;
             }
         }
     } while (error);
