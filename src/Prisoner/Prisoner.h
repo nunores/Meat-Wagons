@@ -3,10 +3,11 @@
 #include <string>
 
 class Prisoner {
+private:
     int nif;
-    string name;
+    //string name;
     int age;
-    Address address;
+    //Address address;
     int destination; // Destination is the ID of the node representing the location
 
 };
