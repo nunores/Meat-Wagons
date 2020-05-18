@@ -29,7 +29,7 @@ bool Prisoner::canMove() const {
     return destination != -1;
 }
 
-void Prisoner::addPrisoner(vector<Prisoner> prisonersVector){
+void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
     string nif_temp;
     int nif;
     string name;
@@ -44,7 +44,7 @@ void Prisoner::addPrisoner(vector<Prisoner> prisonersVector){
     clearScreen();
 
     while(true){
-        cout<<"what is the prisoner's NIF?"<<endl;
+        cout<<"What is the prisoner's NIF?"<<endl;
         getline(cin, nif_temp);
 
         try{
@@ -73,21 +73,17 @@ void Prisoner::addPrisoner(vector<Prisoner> prisonersVector){
     cout<<"What is the prisoner's name?"<<endl;
     getline(cin,name);
 
-    cout<<"what is the prisoner's age?"<<endl;
+    cout<<"What is the prisoner's age?"<<endl;
     getline(cin, age_temp);
 
     age = stoi(age_temp);
 
-    cout<<"what is the prisoner's age?"<<endl;
-    getline(cin, age_temp);
-
-    cout<<"what is the prisoner's current location? Please insert the corresponding node ID or -1 if not applicable"<<endl;
+    cout<<"What is the prisoner's current location? Please insert the corresponding node ID or -1 if not applicable"<<endl;
     getline(cin, location_temp);
 
     location = stoi(location_temp);
 
-
-    cout<<"what is the prisoner's destination? Please insert the corresponding node ID or -1 if not applicable"<<endl;
+    cout<<"What is the prisoner's destination? Please insert the corresponding node ID or -1 if not applicable"<<endl;
     getline(cin, destination_temp);
 
     destination = stoi(destination_temp);

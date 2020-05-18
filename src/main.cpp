@@ -10,6 +10,7 @@ int main() {
     vector<Prisoner> prisoners;
     prisoners = Prisoner::initPrisoners("../Files/prisoners.txt");
     showMainMenu();
+    Prisoner::addPrisoner(prisoners);
     for(Prisoner prisoner : prisoners)
     {
         prisoner.printPrisoner();

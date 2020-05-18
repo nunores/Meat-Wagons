@@ -26,7 +26,7 @@ public:
 
     void printPrisoner();
     bool canMove() const;
-    void addPrisoner(vector<Prisoner> prisonersVector);
+    static void addPrisoner(vector<Prisoner> &prisonersVector);
     static vector<Prisoner> initPrisoners(string file);
 
 
