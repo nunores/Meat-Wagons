@@ -1,7 +1,18 @@
+
+#include "Prisoner/Prisoner.h"
 #include "Menu/menu.h"
+#include "Misc/misc.h"
+
+
 using namespace std;
 
 int main() {
-    int option = showMainMenu();
+    vector<Prisoner> prisoners;
+    prisoners = Prisoner::initPrisoners("../Files/prisoners.txt");
+    showMainMenu();
+    for(Prisoner prisoner : prisoners)
+    {
+        prisoner.printPrisoner();
+    }
     return 0;
 }

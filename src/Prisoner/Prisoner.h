@@ -4,17 +4,31 @@
 #include <locale>
 #include <string>
 #include <vector>
-#include <misc.h>
+#include <fstream>
+#include <../Misc/misc.h>
 
 using namespace std;
 
 class Prisoner {
 public:
     Prisoner(int nif, string name, int age, int destination, int location);
+    Prisoner();
+
+    void setNif(int nif);
+
+    void setName(const string &name);
+
+    void setAge(int age);
+
+    void setDestination(int destination);
+
+    void setLocation(int location);
+
     void printPrisoner();
     bool canMove() const;
     void addPrisoner(vector<Prisoner> prisonersVector);
     void buildPrisoner();
+    static vector<Prisoner> initPrisoners(string file);
 
 
         private:

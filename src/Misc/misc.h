@@ -1,19 +1,17 @@
 #ifndef MEAT_WAGONS_MISC_H
 #define MEAT_WAGONS_MISC_H
 
-#pragma once
 
 #include <vector>
 #include <string>
 #include <iomanip>
+#include "menu.h"
 #include <iostream>
 #include <sstream>
 #include <queue>
 #include <cmath>
 
-#define min2(a, b) ((a) < (b) ? (a) : (b))
 using namespace std;
-
 
 void clearScreen();
 

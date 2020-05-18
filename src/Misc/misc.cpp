@@ -62,3 +62,9 @@ bool strIsChar(string str) {
     return str.size() != non_alfa;
 
 }
+
+
+
+
+
+
