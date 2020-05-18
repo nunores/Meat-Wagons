@@ -3,6 +3,7 @@
 using namespace std;
 
 int main() {
-    showMainMenu();
+    int option = showMainMenu();
+    
     return 0;
 }

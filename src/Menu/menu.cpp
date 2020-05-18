@@ -13,17 +13,13 @@ int showMainMenu()
     int opt = choseOption(3);
     switch(opt){
         case 0:
-            return 1;
-            break;
+            return 0;
         case 1:
-            //displayPrisoners();
-            break;
+            return 1;
         case 2:
-            //addPrisoner();
-            break;
+            return 2;
         case 3:
-            //transportPrisoner();
-            break;
+            return 3;
     }
 }
 
