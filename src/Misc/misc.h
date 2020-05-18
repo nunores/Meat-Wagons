@@ -27,5 +27,4 @@ void enter_to_exit();
 
 bool checkNif(int nif);
 
-
 #endif //MEAT_WAGONS_MISC_H

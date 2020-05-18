@@ -14,10 +14,9 @@ public:
     void printPrisoner();
     bool canMove() const;
     void addPrisoner(vector<Prisoner> prisonersVector);
-    void buildPrisoner();
 
 
-        private:
+private:
     int nif;
     string name;
     int age;
