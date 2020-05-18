@@ -27,11 +27,10 @@ public:
     void printPrisoner();
     bool canMove() const;
     void addPrisoner(vector<Prisoner> prisonersVector);
-    void buildPrisoner();
     static vector<Prisoner> initPrisoners(string file);
 
 
-        private:
+private:
     int nif;
     string name;
     int age;
