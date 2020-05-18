@@ -24,14 +24,14 @@ bool Prisoner::canMove() const {
 void Prisoner::buildPrisoner(){
     clearScreen();
 
-    cout << "Working" << endl;
+    
 
 }
 
 void Prisoner::addPrisoner(vector<Prisoner> prisonersVector){
     // clearScreen();
 
-    
+
 
 
 
