@@ -10,7 +10,21 @@ int showMainMenu()
     cout << "2. Adicionar um prisioneiro" << endl;
     cout << "3. Transportar prisioneiro" << endl;
     cout << "0. Sair" << endl;
-    return choseOption(3);
+    int opt = choseOption(3);
+    switch(opt){
+        case 0:
+            return 1;
+            break;
+        case 1:
+            //displayPrisoners();
+            break;
+        case 2:
+            //addPrisoner();
+            break;
+        case 3:
+            //transportPrisoner();
+            break;
+    }
 }
 
 int choseOption(int options)
