@@ -24,6 +24,7 @@ int choseOption(int options)
         for (int i = 0; i < option.size(); i++) {
             if (isalpha(option[i])) {
                 error = true;
+                break;
             }
         }
         if (error) {
