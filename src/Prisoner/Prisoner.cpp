@@ -234,5 +234,7 @@ void Prisoner::savePrisoners(vector<Prisoner> &prisonersVector){
             prisonersFile << "::::::::::" << endl;
     }
 
+    prisonersFile.close();
+
 }
 

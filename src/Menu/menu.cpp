@@ -1,5 +1,6 @@
 #include <Prisoner.h>
 #include "menu.h"
+
 using namespace std;
 
 
@@ -14,7 +15,7 @@ int showMainMenu(vector<Prisoner> &prisoners)
     cout << "4. Transportar prisioneiro/s" << endl;
     cout << "0. Sair" << endl;
     int opt = choseOption(4);
-    switch(opt){
+    switch (opt) {
         case 0:
             return 0;
         case 1:
@@ -26,9 +27,40 @@ int showMainMenu(vector<Prisoner> &prisoners)
             Prisoner::removePrisoner(prisoners);
             return 3;
         case 4:
-            showTransportMenu();
+            while(true){
+                if(showMapChoice() == 0)
+                    break;
+            }
+
         default:
             return -1;
+    }
+}
+
+int showMapChoice() {
+    cout << "================================" << endl;
+    cout << "              Mapas             " << endl;
+    cout << "================================" << endl;
+    cout << "1. Viseu" << endl;
+    cout << "2. Porto" << endl;
+    cout << "3. Coimbra" << endl;
+    cout << "0. Voltar" << endl;
+    int opt = choseOption(3);
+    switch(opt){
+        case 0:
+            return 0;
+        case 1:
+            while(true){
+                if(showTransportMenu() == 0)
+                    break;
+            }
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            return -1;
+
     }
 }
 
@@ -44,6 +76,8 @@ int showTransportMenu()
     int opt = choseOption(3);
     switch(opt){
         case 0: break;
+        default:
+            return -1;
     }
 }
 
