@@ -7,9 +7,13 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+
+#include <Prisoner.h>
+
+
 using namespace std;
 
-int showMainMenu();
+int showMainMenu(vector<Prisoner> prisoners);
 int choseOption(int options);
 
 #endif //MEAT_WAGONS_MENU_H

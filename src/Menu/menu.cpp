@@ -1,16 +1,17 @@
+#include <Prisoner.h>
 #include "menu.h"
-
 using namespace std;
 
 
-int showMainMenu()
+int showMainMenu(vector<Prisoner> prisoners)
 {
     cout << "================================" << endl;
     cout << "              Menu              " << endl;
     cout << "================================" << endl;
     cout << "1. Ver todos os prisioneiros" << endl;
     cout << "2. Adicionar um prisioneiro" << endl;
-    cout << "3. Transportar prisioneiro" << endl;
+    cout << "3. Remover um prisioneiro" << endl;
+    cout << "4. Transportar prisioneiro" << endl;
     cout << "0. Sair" << endl;
     int opt = choseOption(3);
     switch(opt){
@@ -19,8 +20,10 @@ int showMainMenu()
         case 1:
             return 1;
         case 2:
+            Prisoner::addPrisoner(prisoners);
             return 2;
         case 3:
+            Prisoner::removePrisoner(prisoners);
             return 3;
         default:
             return -1;
