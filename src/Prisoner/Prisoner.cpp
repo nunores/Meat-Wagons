@@ -97,6 +97,61 @@ void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
     enter_to_exit();
 }
 
+void Prisoner::removePrisoner(vector<Prisoner> &prisonersVector) {
+    // Getting the prisoner to remove
+
+    string nif_temp;
+    int nif;
+    Prisoner prisoner = Prisoner();
+    bool found = false;
+
+    while(true){
+        cout<<"What is the prisoner's NIF to remove?"<<endl;
+        getline(cin, nif_temp);
+
+        try{
+            nif = stoi(nif_temp);
+            if(!checkNif(nif))
+                throw exception();
+
+            // Finding the wanted prisoner
+            for(auto it = prisonersVector.begin(); it != prisonersVector.end(); it++){
+                if(it->nif == nif) {
+                    prisoner = *it;
+                    found = true;
+                    prisonersVector.erase(it);
+                    break;
+                }
+            }
+
+
+            if(found){
+                cout << "Prisoner removed succesfully" << endl;
+                enter_to_exit();
+                return;
+            }
+            else
+                throw exception();
+        }
+
+        catch(...){
+            clearScreen();
+            cout<<"NIF not valid, please try again"<<endl;
+        }
+
+    }
+
+
+
+
+
+
+
+    // Removing the prisoner
+    //prisonersVector.erase(/*iterator*/);
+}
+
+
 void Prisoner::setNif(int nif) {
     this->nif = nif;
 }
