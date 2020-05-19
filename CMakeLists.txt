@@ -23,4 +23,5 @@ add_executable(Meat_Wagons
         src/Misc/misc.h
         src/Prisoner/Prisoner.cpp
         src/Prisoner/Prisoner.h
-        src/main.cpp)
+        src/main.cpp
+        )
