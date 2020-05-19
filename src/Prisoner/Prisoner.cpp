@@ -25,6 +25,12 @@ void Prisoner::printPrisoner() {
     cout << "::::::::::" << endl;
 }
 
+void Prisoner::printAllPrisoners(vector<Prisoner> prisonersVector){
+    for (auto prisoner : prisonersVector) {
+        prisoner.printPrisoner();
+    }
+}
+
 bool Prisoner::canMove() const {
     return destination != -1;
 }

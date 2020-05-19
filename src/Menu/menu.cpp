@@ -23,6 +23,7 @@ int showMainMenu(vector<Prisoner> &prisoners)
         case 0:
             return 0;
         case 1:
+            Prisoner::printAllPrisoners(prisoners);
             return 1;
         case 2:
             Prisoner::addPrisoner(prisoners);
@@ -39,6 +40,7 @@ int showMainMenu(vector<Prisoner> &prisoners)
         default:
             return -1;
     }
+
 }
 
 int showMapChoice() {
@@ -86,6 +88,7 @@ int showTransportMenu()
         default:
             return -1;
     }
+    return 0;
 }
 
 int choseOption(int options)
