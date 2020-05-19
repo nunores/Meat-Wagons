@@ -18,6 +18,7 @@ int showMainMenu(vector<Prisoner> &prisoners)
         case 0:
             return 0;
         case 1:
+            Prisoner::printAllPrisoners(prisoners);
             return 1;
         case 2:
             Prisoner::addPrisoner(prisoners);
@@ -30,6 +31,7 @@ int showMainMenu(vector<Prisoner> &prisoners)
         default:
             return -1;
     }
+
 }
 
 int showTransportMenu()
@@ -45,6 +47,7 @@ int showTransportMenu()
     switch(opt){
         case 0: break;
     }
+    return 0;
 }
 
 int choseOption(int options)
