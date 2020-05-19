@@ -2,6 +2,8 @@
 #define MEAT_WAGONS_POINT_H
 
 
+#include <ostream>
+
 class Point {
 private:
     int id;
@@ -12,6 +14,12 @@ public:
     Point(int id, int x, int y);
 
     int getId() const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Point &point);
+
+    bool operator==(const Point &rhs) const;
+
+    bool operator!=(const Point &rhs) const;
 };
 
 

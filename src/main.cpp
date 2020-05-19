@@ -10,9 +10,9 @@ int main() {
     vector<Prisoner> prisoners;
     prisoners = Prisoner::initPrisoners("../Files/prisoners.txt");
     showMainMenu(prisoners);
-    Graph<int> graph;
+    Graph<Point> graph;
 
-    parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt", &graph);
+    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);
 
     GraphViewer *gc = new GraphViewer(600, 600, false);
     gc->createWindow(1000,1000);

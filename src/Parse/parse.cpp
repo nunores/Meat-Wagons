@@ -1,8 +1,8 @@
 #include "parse.h"
-#include "../Point/point.h"
 
-void parseNodes(const string& path_to_nodes, Graph<int> *graph){
+void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
     string temp;
+    int id, x, y;
     Point point = Point();
 
     ifstream nodes_file;
@@ -12,8 +12,20 @@ void parseNodes(const string& path_to_nodes, Graph<int> *graph){
 
     while(!nodes_file.eof()){
         getline(nodes_file, temp);
-        point = Point(0, 0 ,0);
+        id = stoi(temp.substr(1, temp.find_first_of(',')));
+
+        temp = temp.substr(temp.find_first_of(',')+2);
+
+        x = stoi(temp.substr(0, temp.find_first_of(',')));
+        temp = temp.substr(temp.find_first_of(',')+2);
+
+        y = stoi(temp.substr(0, temp.find_first_of(',')));
+
+        point = Point(id, x ,y);
     }
+
+    graph->addVertex(point);
+
 
 
 }
