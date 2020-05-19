@@ -1,5 +1,7 @@
 #include "misc.h"
 
+extern Graph<Point> graph;
+
 
 #ifdef _WIN32
 void clearScreen() {
@@ -61,6 +63,18 @@ bool strIsChar(string str) {
 
     return str.size() != non_alfa;
 
+}
+
+GraphViewer * createGraph(){
+    GraphViewer *gv = new GraphViewer(900, 900, false);
+    gv->createWindow(900, 900);
+    gv->defineVertexColor("blue");
+    gv->defineEdgeColor("black");
+
+    for (unsigned i = 0; i < graph.getNumVertex(); i++)
+        gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), graph.getVertexSet()[i]->getInfo().getX()/1000, graph.getVertexSet()[i]->getInfo().getY()/1000);
+
+    return gv;
 }
 
 

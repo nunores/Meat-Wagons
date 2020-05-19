@@ -10,6 +10,10 @@
 #include <queue>
 #include <cmath>
 
+#include "../Point/point.h"
+#include "Graph.h"
+#include <graphviewer.h>
+
 using namespace std;
 
 void clearScreen();
@@ -23,5 +27,7 @@ bool strIsChar(string str);
 void enter_to_exit();
 
 bool checkNif(int nif);
+
+GraphViewer* createGraph();
 
 #endif //MEAT_WAGONS_MISC_H

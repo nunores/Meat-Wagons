@@ -19,7 +19,16 @@ int main() {
 
     Prisoner::savePrisoners(prisoners);
 
-    GraphViewer *gc = new GraphViewer(600, 600, false);
-    gc->createWindow(1000,1000);
+    //GraphViewer *gc = new GraphViewer(600, 600, false);
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cin >> command;
+
+        if(command == "q")
+            break;
+    }
+
     return 0;
 }
