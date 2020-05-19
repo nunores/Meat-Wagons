@@ -9,7 +9,13 @@ using namespace std;
 int main() {
     vector<Prisoner> prisoners;
     prisoners = Prisoner::initPrisoners("../Files/prisoners.txt");
-    showMainMenu(prisoners);
+    while (true)
+    {
+        if(showMainMenu(prisoners) == 0)
+            break;
+    }
+
+
     Graph<Point> graph;
 
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);

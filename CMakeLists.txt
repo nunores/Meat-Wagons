@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(Meat_Wagons)
 
 set(CMAKE_CXX_STANDARD 14)
-link_libraries(ws2_32 wsock32)
+#link_libraries(ws2_32 wsock32)
 
 include_directories(src/DataStructure)
 include_directories(src/GraphViewer)

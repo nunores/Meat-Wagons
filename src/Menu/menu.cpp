@@ -11,9 +11,9 @@ int showMainMenu(vector<Prisoner> prisoners)
     cout << "1. Ver todos os prisioneiros" << endl;
     cout << "2. Adicionar um prisioneiro" << endl;
     cout << "3. Remover um prisioneiro" << endl;
-    cout << "4. Transportar prisioneiro" << endl;
+    cout << "4. Transportar prisioneiro/s" << endl;
     cout << "0. Sair" << endl;
-    int opt = choseOption(3);
+    int opt = choseOption(4);
     switch(opt){
         case 0:
             return 0;
@@ -25,8 +25,25 @@ int showMainMenu(vector<Prisoner> prisoners)
         case 3:
             Prisoner::removePrisoner(prisoners);
             return 3;
+        case 4:
+            showTransportMenu();
         default:
             return -1;
+    }
+}
+
+int showTransportMenu()
+{
+    cout << "================================" << endl;
+    cout << "    Transportar prisioneiro/s   " << endl;
+    cout << "================================" << endl;
+    cout << "1. Carrinha com capacidade ilimitada" << endl;
+    cout << "2. Carrinha com capacidade ilimitada e recolha seletiva" << endl;
+    cout << "3. Carrinha com capacidade limitada e recolha seletiva" << endl;
+    cout << "0. Voltar" << endl;
+    int opt = choseOption(3);
+    switch(opt){
+        case 0: break;
     }
 }
 
