@@ -3,7 +3,7 @@
 using namespace std;
 
 
-int showMainMenu(vector<Prisoner> prisoners)
+int showMainMenu(vector<Prisoner> &prisoners)
 {
     cout << "================================" << endl;
     cout << "              Menu              " << endl;

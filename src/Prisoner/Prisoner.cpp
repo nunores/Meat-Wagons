@@ -41,8 +41,6 @@ void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
     int destination;
     bool found = false;
 
-    clearScreen();
-
     while(true){
         cout<<"What is the prisoner's NIF?"<<endl;
         getline(cin, nif_temp);
@@ -57,19 +55,17 @@ void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
 
             if(found){
                 clearScreen();
-                cout<<"Prisoner with that NIF ais lready on registed " << endl;
+                cout<<"Prisoner with that NIF is already on registed " << endl;
             }
             else
                 break;
         }
 
         catch(...){
-            clearScreen();
             cout<<"NIF not valid, please try again"<<endl;
         }
 
     }
-    clearScreen();
     cout<<"What is the prisoner's name?"<<endl;
     getline(cin,name);
 
@@ -80,6 +76,8 @@ void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
 
     cout<<"What is the prisoner's current location? Please insert the corresponding node ID or -1 if not applicable"<<endl;
     getline(cin, location_temp);
+
+    // TODO: Verificar que ele se encontra numa localização válida
 
     location = stoi(location_temp);
 
@@ -194,5 +192,47 @@ vector<Prisoner> Prisoner::initPrisoners(string file){
         getline(prisonersFile, line);
     }
     return prisoners;
+}
+
+int Prisoner::getNif() const {
+    return nif;
+}
+
+string Prisoner::getName() const {
+    return name;
+}
+
+int Prisoner::getAge() const {
+    return age;
+}
+
+int Prisoner::getDestination() const {
+    return destination;
+}
+
+int Prisoner::getLocation() const {
+    return location;
+}
+
+void Prisoner::savePrisoners(vector<Prisoner> &prisonersVector){
+    ofstream prisonersFile;
+    prisonersFile.open("../Files/prisoners.txt");
+
+    int temp = 0;
+
+    for(Prisoner prisoner : prisonersVector){
+        temp++;
+        prisonersFile << to_string(prisoner.getNif()) << endl;
+        prisonersFile << prisoner.getName() << endl;
+        prisonersFile << to_string(prisoner.getAge()) << endl;
+        prisonersFile << to_string(prisoner.getLocation()) << endl;
+        prisonersFile << to_string(prisoner.getDestination()) << endl;
+
+        if(temp == prisonersVector.size())
+            prisonersFile << "::::::::::";
+        else
+            prisonersFile << "::::::::::" << endl;
+    }
+
 }
 

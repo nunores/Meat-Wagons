@@ -15,14 +15,17 @@ public:
     Prisoner();
 
     void setNif(int nif);
-
     void setName(const string &name);
-
     void setAge(int age);
-
     void setDestination(int destination);
-
     void setLocation(int location);
+
+    int getNif() const;
+    string getName() const;
+    int getAge() const;
+    int getDestination() const;
+    int getLocation() const;
+
 
     void printPrisoner();
     bool canMove() const;
@@ -30,6 +33,7 @@ public:
     static void removePrisoner(vector<Prisoner> &prisonersVector);
 
     static vector<Prisoner> initPrisoners(string file);
+    static void savePrisoners(vector<Prisoner> &prisonersVector);
 
 
 private:
