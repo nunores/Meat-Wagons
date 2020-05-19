@@ -7,11 +7,13 @@
 class Point {
 private:
     int id;
-    int x, y;
+    double x, y;
 
 public:
     Point();
-    Point(int id, int x, int y);
+    Point(int id, double x, double y);
+
+    Point(int id);
 
     int getId() const;
 
@@ -20,6 +22,10 @@ public:
     bool operator==(const Point &rhs) const;
 
     bool operator!=(const Point &rhs) const;
+
+    double getX() const;
+
+    double getY() const;
 };
 
 

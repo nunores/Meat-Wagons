@@ -13,6 +13,9 @@ int main() {
     Graph<Point> graph;
 
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);
+    parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt", &graph);
+
+
 
     GraphViewer *gc = new GraphViewer(600, 600, false);
     gc->createWindow(1000,1000);

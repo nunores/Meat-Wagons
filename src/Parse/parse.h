@@ -7,10 +7,11 @@
 #include <string>
 #include <Graph.h>
 #include "../Point/point.h"
+#include <cmath>
 
 using namespace std;
 
 void parseNodes(const string& path_to_nodes, Graph<Point> *graph);
-
+void parseEdges(const string& path_to_edges, Graph<Point> *graph);
 
 #endif //MEAT_WAGONS_PARSE_H
