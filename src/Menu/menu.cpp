@@ -22,6 +22,8 @@ int showMainMenu()
             return 2;
         case 3:
             return 3;
+        default:
+            return -1;
     }
 }
 

@@ -1,4 +1,4 @@
-#include "graphviewer/graphviewer.h"
+#include "GraphViewer/graphviewer.h"
 #include "Prisoner/Prisoner.h"
 #include "Menu/menu.h"
 #include "Misc/misc.h"
