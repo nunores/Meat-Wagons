@@ -15,6 +15,7 @@ using namespace std;
 
 int showMainMenu(vector<Prisoner> &prisoners);
 int choseOption(int options);
+int showTransportMenu();
 
 #endif //MEAT_WAGONS_MENU_H
 

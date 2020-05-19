@@ -9,10 +9,11 @@ using namespace std;
 int main() {
     vector<Prisoner> prisoners;
     prisoners = Prisoner::initPrisoners("../Files/prisoners.txt");
-    showMainMenu(prisoners);
 
-    for(Prisoner prisoner : prisoners){
-        prisoner.printPrisoner();
+    while (true)
+    {
+        if(showMainMenu(prisoners) == 0)
+            break;
     }
 
     Graph<Point> graph;
