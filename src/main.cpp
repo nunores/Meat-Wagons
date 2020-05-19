@@ -3,8 +3,9 @@
 #include "Graph.h"
 #include "Parse/parse.h"
 
-
 using namespace std;
+
+Graph<Point> graph;
 
 int main() {
     vector<Prisoner> prisoners;
@@ -15,11 +16,6 @@ int main() {
         if(showMainMenu(prisoners) == 0)
             break;
     }
-
-    Graph<Point> graph;
-
-    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);
-    parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt", &graph);
 
     Prisoner::savePrisoners(prisoners);
 

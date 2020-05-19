@@ -1,8 +1,12 @@
 #include <Prisoner.h>
 #include "menu.h"
+#include "../Point/point.h"
+#include "Graph.h"
+#include "../Parse/parse.h"
 
 using namespace std;
 
+extern Graph<Point> graph;
 
 int showMainMenu(vector<Prisoner> &prisoners)
 {
@@ -50,6 +54,9 @@ int showMapChoice() {
         case 0:
             return 0;
         case 1:
+            cout << "Loading..." << endl;
+            parseViseu();
+
             while(true){
                 if(showTransportMenu() == 0)
                     break;

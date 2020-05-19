@@ -13,5 +13,6 @@ using namespace std;
 
 void parseNodes(const string& path_to_nodes, Graph<Point> *graph);
 void parseEdges(const string& path_to_edges, Graph<Point> *graph);
+void parseViseu();
 
 #endif //MEAT_WAGONS_PARSE_H

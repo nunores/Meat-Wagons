@@ -1,6 +1,10 @@
 #include "parse.h"
 
+extern Graph<Point> graph;
+
 void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
+    *graph = Graph<Point>();
+
     string temp;
     int id;
     float x, y;
@@ -27,6 +31,11 @@ void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
 
     }
 
+}
+
+void parseViseu(){
+    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);
+    parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt", &graph);
 }
 
 // Do strictly after nodes
