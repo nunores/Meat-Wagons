@@ -64,8 +64,22 @@ int showMapChoice() {
                     break;
             }
         case 2:
+            cout << "Loading..." << endl;
+            parsePorto();
+
+            while(true){
+                if(showTransportMenu() == 0)
+                    break;
+            }
             break;
         case 3:
+            cout << "Loading..." << endl;
+            parseCoimbra();
+
+            while(true){
+                if(showTransportMenu() == 0)
+                    break;
+            }
             break;
         default:
             return -1;

@@ -126,6 +126,12 @@ public:
     vector<Vertex<T> *> getVertexSet() const;
 
     // Fp05 - single source
+
+    vector<T> dfs() const;
+    void dfsVisit(Vertex<T> *v, vector<T> & res) const;
+    vector<T> bfs(const T & source) const;
+    bool isDAG() const;
+    bool dfsIsDAG(Vertex<T> *v) const;
     void dijkstraShortestPath(const T &s);
     void unweightedShortestPath(const T &s);
     void bellmanFordShortestPath(const T &s);
@@ -204,6 +210,112 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
 
 
 /**************** Single Source Shortest Path algorithms ************/
+
+
+/*
+ * Performs a depth-first search (dfs) in a graph (this).
+ * Returns a vector with the contents of the vertices by dfs order.
+ * Follows the algorithm described in theoretical classes.
+ */
+template <class T>
+vector<T> Graph<T>::dfs() const {
+    vector<T> res;
+    for (auto v : vertexSet)
+        v->visited = false;
+    for (auto v : vertexSet)
+        if (! v->visited)
+            dfsVisit(v, res);
+    return res;
+}
+
+/*
+ * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
+ * Updates a parameter with the list of visited node contents.
+ */
+template <class T>
+void Graph<T>::dfsVisit(Vertex<T> *v, vector<T> & res) const {
+    v->visited = true;
+    res.push_back(v->info);
+    for (auto & e : v->adj) {
+        auto w = e.dest;
+        if ( ! w->visited)
+            dfsVisit(w, res);
+    }
+}
+
+/*
+ * Performs a breadth-first search (bfs) in a graph (this), starting
+ * from the vertex with the given source contents (source).
+ * Returns a vector with the contents of the vertices by dfs order.
+ * Follows the algorithm described in theoretical classes.
+ */
+template <class T>
+vector<T> Graph<T>::bfs(const T & source) const {
+    vector<T> res;
+    auto s = findVertex(source);
+    if (s == NULL)
+        return res;
+    queue<Vertex<T> *> q;
+    for (auto v : vertexSet)
+        v->visited = false;
+    q.push(s);
+    s->visited = true;
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        res.push_back(v->info);
+        for (auto & e : v->adj) {
+            auto w = e.dest;
+            if ( ! w->visited ) {
+                q.push(w);
+                w->visited = true;
+            }
+        }
+    }
+    return res;
+}
+
+
+/*
+ * Performs a depth-first search in a graph (this), to determine if the graph
+ * is acyclic (acyclic directed graph or DAG).
+ * During the search, a cycle is found if an edge connects to a vertex
+ * that is being processed in the the stack of recursive calls (see theoretical classes).
+ * Returns true if the graph is acyclic, and false otherwise.
+ */
+
+template <class T>
+bool Graph<T>::isDAG() const {
+    for (auto v : vertexSet) {
+        v->visited = false;
+        v->processing = false;
+    }
+    for (auto v : vertexSet)
+        if (! v->visited)
+            if ( ! dfsIsDAG(v) )
+                return false;
+    return true;
+}
+
+/**
+ * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
+ * Returns false (not acyclic) if an edge to a vertex in the stack is found.
+ */
+template <class T>
+bool Graph<T>::dfsIsDAG(Vertex<T> *v) const {
+    v->visited = true;
+    v->processing = true;
+    for (auto & e : v->adj) {
+        auto w = e.dest;
+        if (w->processing)
+            return false;
+        if (! w->visited)
+            if (! dfsIsDAG(w))
+                return false;
+    }
+    v->processing = false;
+    return true;
+}
 
 /**
  * Initializes single source shortest path data (path, dist).

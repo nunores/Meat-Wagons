@@ -11,14 +11,14 @@
 
 using namespace std;
 
-void parseNodes(const string& path_to_nodes, Graph<Point> *graph);
-void parseEdges(const string& path_to_edges, Graph<Point> *graph);
+void parseNodes(const string& path_to_nodes);
+void parseEdges(const string& path_to_edges);
 void parseViseu();
 double getLowestX();
 double getHighestX();
 double getLowestY();
 double getHighestY();
-
-
+void parsePorto();
+void parseCoimbra();
 
 #endif //MEAT_WAGONS_PARSE_H
