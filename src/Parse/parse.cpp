@@ -2,7 +2,7 @@
 
 extern Graph<Point> graph;
 
-void parseNodes(const string& path_to_nodes, int sourceit){
+void parseNodes(const string& path_to_nodes){
     string temp;
     int id;
     double x, y;
