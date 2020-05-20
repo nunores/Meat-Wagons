@@ -63,6 +63,7 @@ int showMapChoice() {
                 if(showTransportMenu() == 0)
                     break;
             }
+            break;
         case 2:
             cout << "Loading..." << endl;
             parsePorto();
