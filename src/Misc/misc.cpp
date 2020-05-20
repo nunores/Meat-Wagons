@@ -71,8 +71,11 @@ GraphViewer * createGraph(){
     gv->defineVertexColor("blue");
     gv->defineEdgeColor("black");
 
+
     for (unsigned i = 0; i < graph.getNumVertex(); i++)
-        gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), graph.getVertexSet()[i]->getInfo().getX()/1000, graph.getVertexSet()[i]->getInfo().getY()/1000);
+        gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), graph.getVertexSet()[i]->getInfo().getX(), graph.getVertexSet()[i]->getInfo().getY());
+
+
 
     return gv;
 }
