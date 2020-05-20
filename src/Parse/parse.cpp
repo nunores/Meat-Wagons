@@ -85,19 +85,50 @@ void parseViseu(){
     graph = Graph<Point>();
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt");
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
+    parseTags("../Mapas/meat_wagon_tags_viseu.txt");
+
 }
 
 void parsePorto(){
     graph = Graph<Point>();
     parseNodes("../Mapas/PortugalMaps/Porto/nodes_x_y_porto.txt");
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
-    
+    //parseTags("../Mapas/TagExamples/Porto/t08_tags_porto.txt");
+
 }
 
 void parseCoimbra(){
     graph = Graph<Point>();
     parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt");
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
+    //parseTags("../Mapas/TagExamples/Coimbra/t08_tags_coimbra.txt");
+
+}
+
+void parseTags(const string& path_to_tags){
+    string temp;
+    int id;
+
+    ifstream tags_file;
+    tags_file.open(path_to_tags);
+
+    getline(tags_file, temp);
+
+    while(!tags_file.eof()){
+
+        for (int i = 0; i < 4; ++i) {
+            getline(tags_file, temp);
+            getline(tags_file, temp);
+            for (int j = 0; j < 61; ++j) {
+                getline(tags_file, temp);
+                Point point = Point(stoi(temp));
+                graph.findVertex(point)->setIsLocation();
+            }
+        }
+
+
+
+    }
 }
 
 // Do strictly after nodes

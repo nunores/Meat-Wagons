@@ -13,6 +13,8 @@ using namespace std;
 
 void parseNodes(const string& path_to_nodes);
 void parseEdges(const string& path_to_edges);
+void parseTags(const string& path_to_tags);
+
 void parseViseu();
 double getLowestX();
 double getHighestX();
@@ -20,5 +22,6 @@ double getLowestY();
 double getHighestY();
 void parsePorto();
 void parseCoimbra();
+
 
 #endif //MEAT_WAGONS_PARSE_H

@@ -24,6 +24,7 @@ template <class T> class Vertex;
 template <class T>
 class Vertex {
     T info;                // contents
+    bool isLocation = false;
     vector<Edge<T> > adj;  // outgoing edges
     bool visited;          // auxiliary field
     double dist = 0;
@@ -40,6 +41,7 @@ public:
     T getInfo() const;
     double getDist() const;
     Vertex *getPath() const;
+    void setIsLocation();
     friend class Graph<T>;
     friend class MutablePriorityQueue<Vertex<T>>;
 };
@@ -152,6 +154,11 @@ public:
 template<class T>
 vector<Edge<T>> Vertex<T>::getAdj() const {
     return adj;
+}
+
+template<class T>
+void Vertex<T>::setIsLocation() {
+    isLocation = true;
 }
 
 
