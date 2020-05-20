@@ -14,6 +14,10 @@ using namespace std;
 void parseNodes(const string& path_to_nodes);
 void parseEdges(const string& path_to_edges);
 void parseViseu();
+double getLowestX();
+double getHighestX();
+double getLowestY();
+double getHighestY();
 void parsePorto();
 void parseCoimbra();
 
