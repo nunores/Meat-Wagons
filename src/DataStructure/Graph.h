@@ -29,6 +29,7 @@ class Vertex {
     double dist = 0;
     Vertex<T> *path = nullptr;
     int queueIndex = 0; 		// required by MutablePriorityQueue
+    vector<Edge<T> > getAdj() const;
 
     void addEdge(Vertex<T> *dest, double w);
 
@@ -147,6 +148,11 @@ public:
     vector<Vertex<T>*> calculatePrim();
     vector<Vertex<T>*> calculateKruskal();
 };
+
+template<class T>
+vector<Edge<T>> Vertex<T>::getAdj() const {
+    return adj;
+}
 
 
 template <class T>
