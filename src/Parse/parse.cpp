@@ -2,12 +2,12 @@
 
 extern Graph<Point> graph;
 
-void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
-    *graph = Graph<Point>();
+void parseNodes(const string& path_to_nodes){
+    graph = Graph<Point>();
 
     string temp;
     int id;
-    float x, y;
+    double x, y;
     Point point = Point();
 
     ifstream nodes_file;
@@ -21,20 +21,70 @@ void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
 
         temp = temp.substr(temp.find_first_of(',')+2);
 
+
         x = stod(temp.substr(0, temp.find_first_of(',')));
         temp = temp.substr(temp.find_first_of(',')+2);
 
-        y = stod(temp.substr(0, temp.find_first_of(',')));
-
+        y = stod(temp.substr(0, temp.find_first_of(')')));
         point = Point(id, x ,y);
-        graph->addVertex(point);
-
+        graph.addVertex(point);
     }
+}
 
+double getLowestX()
+{
+    double x = 99999999;
+    for (unsigned i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getInfo().getX() < x)
+        {
+            x = graph.getVertexSet()[i]->getInfo().getX();
+        }
+    }
+    return x;
+}
+
+double getHighestX()
+{
+    double x = -99999999;
+    for (unsigned i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getInfo().getX() > x)
+        {
+            x = graph.getVertexSet()[i]->getInfo().getX();
+        }
+    }
+    return x;
+}
+
+double getLowestY()
+{
+    double y = 99999999;
+    for (unsigned i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getInfo().getY() < y)
+        {
+            y = graph.getVertexSet()[i]->getInfo().getY();
+        }
+    }
+    return y;
+}
+
+double getHighestY()
+{
+    double y = -99999999;
+    for (unsigned i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getInfo().getY() > y)
+        {
+            y = graph.getVertexSet()[i]->getInfo().getY();
+        }
+    }
+    return y;
 }
 
 void parseViseu(){
-    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);
+    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt");
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt", &graph);
 }
 

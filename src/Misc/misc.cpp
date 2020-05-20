@@ -1,4 +1,5 @@
 #include "misc.h"
+#include "../Parse/parse.h"
 
 extern Graph<Point> graph;
 
@@ -70,10 +71,15 @@ GraphViewer * createGraph(){
     gv->createWindow(900, 900);
     gv->defineVertexColor("blue");
     gv->defineEdgeColor("black");
+    double xmin = getLowestX();
+    double  xmax = getHighestX();
+    double ymin = getLowestY();
+    double  ymax = getHighestY();
 
-    for (unsigned i = 0; i < graph.getNumVertex(); i++)
-        gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), graph.getVertexSet()[i]->getInfo().getX()/1000, graph.getVertexSet()[i]->getInfo().getY()/1000);
-
+    for (unsigned i = 0; i < graph.getNumVertex(); i++) {
+        //gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), graph.getVertexSet()[i]->getInfo().getX()/1000, graph.getVertexSet()[i]->getInfo().getY()/1000);
+        gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), (int) (((graph.getVertexSet()[i]->getInfo().getX() - xmin) / (xmax - xmin)) * 5000), (int) ((1.0 - ((graph.getVertexSet()[i]->getInfo().getY() - ymin) / (ymax - ymin)))*2500));
+    }
     return gv;
 }
 
