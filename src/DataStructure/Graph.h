@@ -126,6 +126,12 @@ public:
     vector<Vertex<T> *> getVertexSet() const;
 
     // Fp05 - single source
+
+    vector<T> dfs() const;
+    void dfsVisit(Vertex<T> *v, vector<T> & res) const;
+    vector<T> bfs(const T & source) const;
+    bool isDAG() const;
+    bool dfsIsDAG(Vertex<T> *v) const;
     void dijkstraShortestPath(const T &s);
     void unweightedShortestPath(const T &s);
     void bellmanFordShortestPath(const T &s);

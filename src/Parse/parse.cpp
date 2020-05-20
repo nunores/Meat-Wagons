@@ -2,9 +2,7 @@
 
 extern Graph<Point> graph;
 
-void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
-    *graph = Graph<Point>();
-
+void parseNodes(const string& path_to_nodes){
     string temp;
     int id;
     float x, y;
@@ -27,19 +25,32 @@ void parseNodes(const string& path_to_nodes, Graph<Point> *graph){
         y = stod(temp.substr(0, temp.find_first_of(',')));
 
         point = Point(id, x ,y);
-        graph->addVertex(point);
+        graph.addVertex(point);
 
     }
 
 }
 
 void parseViseu(){
-    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", &graph);
-    parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt", &graph);
+    graph = Graph<Point>();
+    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt");
+    parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
+}
+
+void parsePorto(){
+    graph = Graph<Point>();
+    parseNodes("../Mapas/PortugalMaps/Porto/nodes_x_y_porto.txt");
+    parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
+}
+
+void parseCoimbra(){
+    graph = Graph<Point>();
+    parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt");
+    parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
 }
 
 // Do strictly after nodes
-void parseEdges(const string& path_to_edges, Graph<Point> *graph){
+void parseEdges(const string& path_to_edges){
     string temp;
     int id1, id2;
     float x1, x2, y1, y2;
@@ -61,16 +72,16 @@ void parseEdges(const string& path_to_edges, Graph<Point> *graph){
         Point point1 = Point(id1);
         Point point2 = Point(id2);
 
-        x1 = graph->findVertex(point1)->getInfo().getX();
-        x2 = graph->findVertex(point2)->getInfo().getX();
-        y1 = graph->findVertex(point1)->getInfo().getY();
-        y2 = graph->findVertex(point2)->getInfo().getY();
+        x1 = graph.findVertex(point1)->getInfo().getX();
+        x2 = graph.findVertex(point2)->getInfo().getX();
+        y1 = graph.findVertex(point1)->getInfo().getY();
+        y2 = graph.findVertex(point2)->getInfo().getY();
 
         weight = sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
 
 
-        graph->addEdge(id1, id2, weight);
-        graph->addEdge(id2, id1, weight);
+        graph.addEdge(id1, id2, weight);
+        graph.addEdge(id2, id1, weight);
 
     }
 

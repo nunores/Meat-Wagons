@@ -17,8 +17,6 @@ int main() {
             break;
     }
 
-    Prisoner::savePrisoners(prisoners);
-
     //GraphViewer *gc = new GraphViewer(600, 600, false);
     GraphViewer *gc = createGraph();
 
@@ -29,6 +27,9 @@ int main() {
         if(command == "q")
             break;
     }
+
+    Prisoner::savePrisoners(prisoners);
+
 
     return 0;
 }
