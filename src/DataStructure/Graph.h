@@ -30,6 +30,7 @@ class Vertex {
     double dist = 0;
     Vertex<T> *path = nullptr;
     int queueIndex = 0; 		// required by MutablePriorityQueue
+    bool source = false;
 
 
     void addEdge(Vertex<T> *dest, double w);
