@@ -91,7 +91,7 @@ void parsePorto(){
     graph = Graph<Point>();
     parseNodes("../Mapas/PortugalMaps/Porto/nodes_x_y_porto.txt");
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
-    
+
 }
 
 void parseCoimbra(){
