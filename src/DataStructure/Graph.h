@@ -24,7 +24,7 @@ template <class T> class Vertex;
 template <class T>
 class Vertex {
     T info;                // contents
-    bool isLocation = false;
+    bool isLocation;
     vector<Edge<T> > adj;  // outgoing edges
     bool visited;          // auxiliary field
     double dist = 0;
@@ -42,14 +42,17 @@ public:
     T getInfo() const;
     double getDist() const;
     Vertex *getPath() const;
-    void setIsLocation();
+    void setIsLocation(bool location);
+    bool getLocation() const;
     friend class Graph<T>;
     friend class MutablePriorityQueue<Vertex<T>>;
 };
 
 
 template <class T>
-Vertex<T>::Vertex(T in): info(in) {}
+Vertex<T>::Vertex(T in): info(in) {
+    isLocation = false;
+}
 
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),
@@ -159,18 +162,20 @@ vector<Edge<T>> Vertex<T>::getAdj() const {
 }
 
 template<class T>
-<<<<<<< HEAD
-void Vertex<T>::setIsLocation() {
-    isLocation = true;
+bool Vertex<T>::getLocation() const {
+    return isLocation;
 }
 
-=======
+template<class T>
+void Vertex<T>::setIsLocation(bool location) {
+    isLocation = location;
+}
+
+template<class T>
 Vertex<T> Edge<T>::getDest() {
     return *dest;
 }
 
-
->>>>>>> a366308d95f182318ee53f454e9525d043220bd4
 
 template <class T>
 int Graph<T>::getNumVertex() const {

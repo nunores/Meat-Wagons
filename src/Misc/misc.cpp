@@ -77,7 +77,13 @@ GraphViewer * createGraph(){
     double  ymax = getHighestY();
 
     for (unsigned i = 0; i < graph.getNumVertex(); i++) {
-        //gv->addNode(graph.getVertexSet()[i]->getInfo().getId(), graph.getVertexSet()[i]->getInfo().getX()/1000, graph.getVertexSet()[i]->getInfo().getY()/1000);
+        if(graph.getVertexSet()[i]->getLocation())
+            gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "red");
+        else
+            gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "blue");
+
+
+
         gv->addNode(graph.getVertexSet()[i]->getInfo().getId(),
                     (int) (((graph.getVertexSet()[i]->getInfo().getX() - xmin) / (xmax - xmin)) * 4000 - 300),
                     (int) ((1.0 - ((graph.getVertexSet()[i]->getInfo().getY() - ymin) / (ymax - ymin))) * 2000) - 300);

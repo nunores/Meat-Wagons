@@ -2,7 +2,7 @@
 
 extern Graph<Point> graph;
 
-void parseNodes(const string& path_to_nodes){
+void parseNodes(const string& path_to_nodes, int sourceit){
     string temp;
     int id;
     double x, y;
@@ -83,9 +83,12 @@ double getHighestY()
 
 void parseViseu(){
     graph = Graph<Point>();
+
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt");
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
     parseTags("../Mapas/meat_wagon_tags_viseu.txt");
+
+   // graph.bfs();
 
 }
 
@@ -122,7 +125,7 @@ void parseTags(const string& path_to_tags){
             for (int j = 0; j < 61; ++j) {
                 getline(tags_file, temp);
                 Point point = Point(stoi(temp));
-                graph.findVertex(point)->setIsLocation();
+                graph.findVertex(point)->setIsLocation(true);
             }
         }
 
