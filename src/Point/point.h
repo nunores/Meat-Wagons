@@ -8,6 +8,8 @@ class Point {
 private:
     int id;
     double x, y;
+    bool source = false;
+    bool bfs = false;
 
 public:
     Point();
@@ -26,6 +28,14 @@ public:
     double getX() const;
 
     double getY() const;
+
+    void setSource();
+
+    bool getSource();
+
+    void setBfs();
+
+    bool getBfs();
 };
 
 

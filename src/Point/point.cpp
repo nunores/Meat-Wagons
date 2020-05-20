@@ -32,3 +32,19 @@ bool Point::operator==(const Point &rhs) const {
 bool Point::operator!=(const Point &rhs) const {
     return !(rhs == *this);
 }
+
+void Point::setSource() {
+    source = true;
+}
+
+bool Point::getSource() {
+    return source;
+}
+
+void Point::setBfs() {
+    bfs = true;
+}
+
+bool Point::getBfs() {
+    return bfs;
+}

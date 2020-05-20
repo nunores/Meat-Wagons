@@ -2,9 +2,10 @@
 
 extern Graph<Point> graph;
 
-void parseNodes(const string& path_to_nodes){
+void parseNodes(const string& path_to_nodes, int source){
     string temp;
     int id;
+    int src = 0;
     double x, y;
     Point point = Point();
 
@@ -25,6 +26,11 @@ void parseNodes(const string& path_to_nodes){
 
         y = stod(temp.substr(0, temp.find_first_of(')')));
         point = Point(id, x ,y);
+        if (id == source)
+        {
+            point.setSource();
+            src = id;
+        }
         graph.addVertex(point);
     }
 }
@@ -84,17 +90,14 @@ double getHighestY()
 void parseViseu(){
     graph = Graph<Point>();
 
-    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt");
+    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", 603953666);
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
     parseTags("../Mapas/meat_wagon_tags_viseu.txt");
-
-   // graph.bfs();
-
 }
 
 void parsePorto(){
     graph = Graph<Point>();
-    parseNodes("../Mapas/PortugalMaps/Porto/nodes_x_y_porto.txt");
+    parseNodes("../Mapas/PortugalMaps/Porto/nodes_x_y_porto.txt", 299610576);
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
     //parseTags("../Mapas/TagExamples/Porto/t08_tags_porto.txt");
 
@@ -102,7 +105,7 @@ void parsePorto(){
 
 void parseCoimbra(){
     graph = Graph<Point>();
-    parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt");
+    parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt", 714520129);
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
     //parseTags("../Mapas/TagExamples/Coimbra/t08_tags_coimbra.txt");
 
@@ -137,9 +140,9 @@ void parseTags(const string& path_to_tags){
 // Do strictly after nodes
 void parseEdges(const string& path_to_edges){
     string temp;
-    int id1, id2;
-    float x1, x2, y1, y2;
-    int weight;
+    int id1 = 0, id2 = 0;
+    float x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+    int weight = 0;
 
     ifstream nodes_file;
     nodes_file.open(path_to_edges);
