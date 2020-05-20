@@ -30,13 +30,14 @@ class Vertex {
     double dist = 0;
     Vertex<T> *path = nullptr;
     int queueIndex = 0; 		// required by MutablePriorityQueue
-    vector<Edge<T> > getAdj() const;
+
 
     void addEdge(Vertex<T> *dest, double w);
 
 
 public:
     Vertex(T in);
+    vector<Edge<T> > getAdj() const;
     bool operator<(Vertex<T> & vertex) const; // // required by MutablePriorityQueue
     T getInfo() const;
     double getDist() const;
@@ -93,6 +94,7 @@ public:
     Edge(Vertex<T> *o, Vertex<T> *d, double w);
     friend class Graph<T>;
     friend class Vertex<T>;
+    Vertex<T> getDest();
 
     // Fp07
     double getWeight() const;
@@ -157,10 +159,18 @@ vector<Edge<T>> Vertex<T>::getAdj() const {
 }
 
 template<class T>
+<<<<<<< HEAD
 void Vertex<T>::setIsLocation() {
     isLocation = true;
 }
 
+=======
+Vertex<T> Edge<T>::getDest() {
+    return *dest;
+}
+
+
+>>>>>>> a366308d95f182318ee53f454e9525d043220bd4
 
 template <class T>
 int Graph<T>::getNumVertex() const {

@@ -82,6 +82,15 @@ GraphViewer * createGraph(){
                     (int) (((graph.getVertexSet()[i]->getInfo().getX() - xmin) / (xmax - xmin)) * 4000 - 300),
                     (int) ((1.0 - ((graph.getVertexSet()[i]->getInfo().getY() - ymin) / (ymax - ymin))) * 2000) - 300);
     }
+    int m = 0;
+    for (unsigned i = 0; i < graph.getNumVertex(); i++)
+    {
+        for ( int n = 0; n < graph.getVertexSet()[i]->getAdj().size(); n++)
+        {
+            m++;
+            gv->addEdge(m,graph.getVertexSet()[i]->getInfo().getId(),graph.getVertexSet()[i]->getAdj()[n].getDest().getInfo().getId(),EdgeType::DIRECTED);
+        }
+    }
     return gv;
 }
 
