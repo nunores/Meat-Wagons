@@ -101,7 +101,7 @@ void parsePorto(){
     graph = Graph<Point>();
     parseNodes("../Mapas/PortugalMaps/Porto/nodes_x_y_porto.txt", 299610576);
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
-    //parseTags("../Mapas/TagExamples/Porto/t08_tags_porto.txt");
+    parseTags("../Mapas/meat_wagon_tags_porto.txt", 4, 101);
 
     preProcessing(299610576);
 
