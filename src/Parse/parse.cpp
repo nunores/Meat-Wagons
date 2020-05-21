@@ -109,11 +109,11 @@ void parsePorto(){
 
 void parseCoimbra(){
     graph = Graph<Point>();
-    parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt", 714520129);
+    parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt", 1104700202);
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
     parseTags("../Mapas/meat_wagon_tags_coimbra.txt", 4, 212);
 
-    preProcessing(714520129);
+    preProcessing(1104700202);
 
 }
 
