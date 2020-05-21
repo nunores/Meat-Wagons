@@ -92,7 +92,7 @@ void parseViseu(){
 
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", 374376834);
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
-    parseTags("../Mapas/meat_wagon_tags_viseu.txt");
+    parseTags("../Mapas/meat_wagon_tags_viseu.txt", 4, 61);
 
     preProcessing(374376834);
 }
@@ -103,6 +103,8 @@ void parsePorto(){
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
     //parseTags("../Mapas/TagExamples/Porto/t08_tags_porto.txt");
 
+    preProcessing(299610576);
+
 }
 
 void parseCoimbra(){
@@ -111,9 +113,11 @@ void parseCoimbra(){
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
     //parseTags("../Mapas/TagExamples/Coimbra/t08_tags_coimbra.txt");
 
+    preProcessing(714520129);
+
 }
 
-void parseTags(const string& path_to_tags){
+void parseTags(const string& path_to_tags, int for_1, int for_2){
     string temp;
     int id;
 
@@ -124,10 +128,10 @@ void parseTags(const string& path_to_tags){
 
     while(!tags_file.eof()){
 
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < for_1; ++i) {
             getline(tags_file, temp);
             getline(tags_file, temp);
-            for (int j = 0; j < 61; ++j) {
+            for (int j = 0; j < for_2; ++j) {
                 getline(tags_file, temp);
                 Point point = Point(stoi(temp));
                 graph.findVertex(point)->setIsLocation(true);
