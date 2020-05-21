@@ -158,9 +158,6 @@ void parseTags(const string& path_to_tags){
                 graph.findVertex(point)->setIsLocation(true);
             }
         }
-
-
-
     }
 }
 
