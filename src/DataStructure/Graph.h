@@ -99,6 +99,7 @@ public:
     friend class Graph<T>;
     friend class Vertex<T>;
     Vertex<T> getDest();
+    Vertex<T>* getDestPointer();
 
     // Fp07
     double getWeight() const;
@@ -137,6 +138,7 @@ public:
     // Fp05 - single source
 
     vector<T> dfs() const;
+    vector<Vertex<T>*> mybfs(const T & source) const ;
     void dfsVisit(Vertex<T> *v, vector<T> & res) const;
     vector<T> bfs(const T & source) const;
     bool isDAG() const;
@@ -176,6 +178,12 @@ template<class T>
 Vertex<T> Edge<T>::getDest() {
     return *dest;
 }
+
+template<class T>
+Vertex<T>* Edge<T>::getDestPointer() {
+    return dest;
+}
+
 
 
 template <class T>
@@ -293,6 +301,32 @@ vector<T> Graph<T>::bfs(const T & source) const {
         auto v = q.front();
         q.pop();
         res.push_back(v->info);
+        for (auto & e : v->adj) {
+            auto w = e.dest;
+            if ( ! w->visited ) {
+                q.push(w);
+                w->visited = true;
+            }
+        }
+    }
+    return res;
+}
+
+template <class T>
+vector<Vertex<T>*> Graph<T>::mybfs(const T & source) const {
+    vector<Vertex<T>*> res;
+    auto s = findVertex(source);
+    if (s == NULL)
+        return res;
+    queue<Vertex<T> *> q;
+    for (auto v : vertexSet)
+        v->visited = false;
+    q.push(s);
+    s->visited = true;
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        res.push_back(v);
         for (auto & e : v->adj) {
             auto w = e.dest;
             if ( ! w->visited ) {
