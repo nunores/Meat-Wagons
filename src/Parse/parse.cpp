@@ -97,12 +97,16 @@ void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
 
     preProcessing(374376834);
     vector<int> prisioneiros;
+    int i = 0;
+
+
     for (Prisoner prisoner : vector_prisoners)
     {
+        i++;
         if (prisoner.getDestination() == dest)
         {
             prisioneiros.push_back(prisoner.getLocation());
-            prisoner.setLocation(dest);
+            vector_prisoners.at(i).setLocation(dest);
         }
     }
 

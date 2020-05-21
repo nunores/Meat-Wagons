@@ -59,29 +59,16 @@ int showMapChoice() {
             return 0;
         case 1:
             showDestinationMenu();
-            while(true){
-                if(showTransportMenu() == 0)
-                    break;
-            }
-            break;
+            return 0;
         case 2:
             cout << "Loading..." << endl;
             parsePorto();
 
-            while(true){
-                if(showTransportMenu() == 0)
-                    break;
-            }
-            break;
+            return 0;
         case 3:
             cout << "Loading..." << endl;
             parseCoimbra();
-
-            while(true){
-                if(showTransportMenu() == 0)
-                    break;
-            }
-            break;
+            return 0;
         default:
             return -1;
 
@@ -101,6 +88,21 @@ int showDestinationMenu()
     dest = stoi(line);
     cout << "Carregando..." << endl;
     parseViseu(dest, prisoners);
+
+
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cout << "Press q to exit!" << endl;
+        cin >> command;
+
+        if(command == "q"){
+            clearBuffer();
+            break;
+        }
+    }
+
 }
 
 int showTransportMenu()
@@ -114,13 +116,13 @@ int showTransportMenu()
     cout << "0. Voltar" << endl;
     int opt = choseOption(3);
     switch(opt){
-        case 0: break;
+        case 0: return 0;
         case 1:
             while(true){
                 if(showMapChoice() == 0)
                     break;
             }
-            break;
+            //break;
         default:
             return -1;
     }
