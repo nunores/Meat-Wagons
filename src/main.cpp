@@ -22,6 +22,7 @@ int main() {
 
     while(true){
         string command;
+        cout << "Press q to exit!" << endl;
         cin >> command;
 
         if(command == "q")
