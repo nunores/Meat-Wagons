@@ -111,7 +111,7 @@ void parseCoimbra(){
     graph = Graph<Point>();
     parseNodes("../Mapas/PortugalMaps/Coimbra/nodes_x_y_coimbra.txt", 714520129);
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
-    //parseTags("../Mapas/TagExamples/Coimbra/t08_tags_coimbra.txt");
+    parseTags("../Mapas/meat_wagon_tags_coimbra.txt", 4, 212);
 
     preProcessing(714520129);
 
