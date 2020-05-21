@@ -246,3 +246,9 @@ void Prisoner::savePrisoners(vector<Prisoner> &prisonersVector){
 
 }
 
+ostream &operator<<(ostream &os, const Prisoner &prisoner) {
+    os << "nif: " << prisoner.nif << " name: " << prisoner.name << " age: " << prisoner.age << " destination: "
+       << prisoner.destination << " location: " << prisoner.location;
+    return os;
+}
+

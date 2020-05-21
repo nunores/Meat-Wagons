@@ -36,6 +36,8 @@ public:
     static vector<Prisoner> initPrisoners(string file);
     static void savePrisoners(vector<Prisoner> &prisonersVector);
 
+    friend ostream &operator<<(ostream &os, const Prisoner &prisoner);
+
 
 private:
     int nif;

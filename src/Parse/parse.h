@@ -26,5 +26,9 @@ void parseCoimbra();
 
 void preProcessing(int source_ID);
 
+bool isInDestinations(vector<int> &destinations, int destination);
+vector<vector<Prisoner>> parsePrisoners(vector<Prisoner> & all_prisoners);
+
+
 
 #endif //MEAT_WAGONS_PARSE_H

@@ -18,6 +18,15 @@ int main() {
             break;
     }
 
+    vector<vector<Prisoner>> temp = parsePrisoners(prisoners);
+
+
+    for (int i = 0; i < temp.size(); ++i) {
+        cout << "Vector: " << i << endl;
+        for (int j = 0; j < temp.at(i).size(); ++j) {
+            cout << temp.at(i).at(j) << endl;
+        }
+    }
 
     Prisoner::savePrisoners(prisoners);
 

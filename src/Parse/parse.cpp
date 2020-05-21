@@ -88,6 +88,42 @@ double getHighestY()
     return y;
 }
 
+vector<vector<Prisoner>> parsePrisoners(vector<Prisoner> & all_prisoners){
+    vector<vector<Prisoner>> res;
+
+    vector<int> destinations;
+    int temp_destination;
+
+    vector<Prisoner> temp;
+
+
+    for (int i = 0; i < all_prisoners.size(); i++) {
+        temp_destination = all_prisoners.at(i).getDestination();
+        if(!isInDestinations(destinations, temp_destination)){
+            destinations.push_back(temp_destination);
+            temp.push_back(all_prisoners.at(i));
+            for (int n = i+1; n < all_prisoners.size(); ++n) {
+                if(all_prisoners.at(n).getDestination() == temp_destination)
+                    temp.push_back(all_prisoners.at(n));
+            }
+            res.push_back(temp);
+            temp.clear();
+        }
+    }
+
+    return res;
+}
+
+
+bool isInDestinations(vector<int> &destinations, int destination){
+    for(int i = 0; i < destinations.size(); i++){
+        if(destination == destinations.at(i))
+            return true;
+    }
+
+    return false;
+}
+
 
 
 void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
@@ -153,7 +189,7 @@ void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
 }
 
 void parseViseu2(vector<Prisoner> &vector_prisoners){
-    graph = Graph<Point>();
+/*    graph = Graph<Point>();
 
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", 374376834);
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
@@ -201,7 +237,7 @@ void parseViseu2(vector<Prisoner> &vector_prisoners){
         for (int i = 0; i < point_vector.size(); i++) {
             graph.findVertex(point_vector[i].getId())->setYellow();
         }
-    }
+    }*/
 }
 
 void parsePorto(){
