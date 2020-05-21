@@ -13,10 +13,11 @@
 
 using namespace std;
 
-int showMainMenu(vector<Prisoner> &prisoners);
+int showMainMenu();
 int choseOption(int options);
 int showTransportMenu();
 int showMapChoice();
+int showDestinationMenu();
 
 #endif //MEAT_WAGONS_MENU_H
 

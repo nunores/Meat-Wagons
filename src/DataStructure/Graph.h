@@ -31,6 +31,7 @@ class Vertex {
     Vertex<T> *path = nullptr;
     int queueIndex = 0; 		// required by MutablePriorityQueue
     bool source = false;
+    bool yellow = false;
 
 
     void addEdge(Vertex<T> *dest, double w);
@@ -47,12 +48,25 @@ public:
     bool getLocation() const;
     friend class Graph<T>;
     friend class MutablePriorityQueue<Vertex<T>>;
+    void setYellow();
+    bool getYellow();
 };
 
 
 template <class T>
 Vertex<T>::Vertex(T in): info(in) {
     isLocation = false;
+}
+
+template <class T>
+void Vertex<T>::setYellow()
+{
+    yellow = true;
+}
+
+template <class T>
+bool Vertex<T>::getYellow() {
+    return yellow;
 }
 
 /*

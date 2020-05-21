@@ -1,5 +1,7 @@
 #include "Prisoner.h"
 
+extern vector<Prisoner> prisoners;
+
 Prisoner::Prisoner(int nif, string name, int age, int destination, int location) {
     this->nif = nif;
     this->name = name;
@@ -25,8 +27,8 @@ void Prisoner::printPrisoner() {
     cout << "::::::::::" << endl;
 }
 
-void Prisoner::printAllPrisoners(vector<Prisoner> prisonersVector){
-    for (auto prisoner : prisonersVector) {
+void Prisoner::printAllPrisoners(){
+    for (auto prisoner : prisoners) {
         prisoner.printPrisoner();
     }
 }
@@ -35,7 +37,7 @@ bool Prisoner::canMove() const {
     return destination != -1;
 }
 
-void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
+void Prisoner::addPrisoner(){
     string nif_temp;
     int nif;
     string name;
@@ -95,13 +97,13 @@ void Prisoner::addPrisoner(vector<Prisoner> &prisonersVector){
 
     Prisoner prisoner = Prisoner(nif, name, age, destination, location);
 
-    prisonersVector.push_back(prisoner);
+    prisoners.push_back(prisoner);
 
     cout << "Prisoner registed!" << endl;
     enter_to_exit();
 }
 
-void Prisoner::removePrisoner(vector<Prisoner> &prisonersVector) {
+void Prisoner::removePrisoner() {
     // Getting the prisoner to remove
 
     string nif_temp;
@@ -119,11 +121,11 @@ void Prisoner::removePrisoner(vector<Prisoner> &prisonersVector) {
                 throw exception();
 
             // Finding the wanted prisoner
-            for(auto it = prisonersVector.begin(); it != prisonersVector.end(); it++){
+            for(auto it = prisoners.begin(); it != prisoners.end(); it++){
                 if(it->nif == nif) {
                     prisoner = *it;
                     found = true;
-                    prisonersVector.erase(it);
+                    prisoners.erase(it);
                     break;
                 }
             }

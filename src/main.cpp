@@ -6,14 +6,15 @@
 using namespace std;
 
 Graph<Point> graph;
+vector<Prisoner> prisoners;
 
 int main() {
-    vector<Prisoner> prisoners;
+
     prisoners = Prisoner::initPrisoners("../Files/prisoners.txt");
 
     while (true)
     {
-        if(showMainMenu(prisoners) == 0)
+        if(showMainMenu() == 0)
             break;
     }
 

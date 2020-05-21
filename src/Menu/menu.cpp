@@ -6,9 +6,11 @@
 
 using namespace std;
 
+extern vector<Prisoner> prisoners;
+
 extern Graph<Point> graph;
 
-int showMainMenu(vector<Prisoner> &prisoners)
+int showMainMenu()
 {
     cout << "================================" << endl;
     cout << "              Menu              " << endl;
@@ -23,17 +25,17 @@ int showMainMenu(vector<Prisoner> &prisoners)
         case 0:
             return 0;
         case 1:
-            Prisoner::printAllPrisoners(prisoners);
+            Prisoner::printAllPrisoners();
             return 1;
         case 2:
-            Prisoner::addPrisoner(prisoners);
+            Prisoner::addPrisoner();
             return 2;
         case 3:
-            Prisoner::removePrisoner(prisoners);
+            Prisoner::removePrisoner();
             return 3;
         case 4:
             while(true){
-                if(showMapChoice() == 0)
+                if(showTransportMenu() == 0)
                     break;
             }
 
@@ -56,9 +58,7 @@ int showMapChoice() {
         case 0:
             return 0;
         case 1:
-            cout << "Loading..." << endl;
-            parseViseu();
-
+            showDestinationMenu();
             while(true){
                 if(showTransportMenu() == 0)
                     break;
@@ -88,6 +88,21 @@ int showMapChoice() {
     }
 }
 
+int showDestinationMenu()
+{
+    cout << "================================" << endl;
+    cout << "      Selecione um destino      " << endl;
+    cout << "================================" << endl;
+
+    cout << "Destino: ";
+    string line;
+    int dest;
+    getline(cin, line);
+    dest = stoi(line);
+    cout << "Carregando..." << endl;
+    parseViseu(dest, prisoners);
+}
+
 int showTransportMenu()
 {
     cout << "================================" << endl;
@@ -100,6 +115,12 @@ int showTransportMenu()
     int opt = choseOption(3);
     switch(opt){
         case 0: break;
+        case 1:
+            while(true){
+                if(showMapChoice() == 0)
+                    break;
+            }
+            break;
         default:
             return -1;
     }

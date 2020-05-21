@@ -79,6 +79,7 @@ GraphViewer * createGraph(){
     for (unsigned i = 0; i < graph.getNumVertex(); i++) {
         if(graph.getVertexSet()[i]->getLocation()) {
             gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "red");
+            gv->setVertexLabel(graph.getVertexSet()[i]->getInfo().getId(), to_string(graph.getVertexSet()[i]->getInfo().getId()));
         }
 
         else {
@@ -86,7 +87,12 @@ GraphViewer * createGraph(){
                 gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "green");
             }
             else
-                gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "blue");
+                if(graph.getVertexSet()[i]->getYellow())
+                {
+                    gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "yellow");
+                }
+                else
+                    gv->setVertexColor(graph.getVertexSet()[i]->getInfo().getId(), "blue");
         }
         gv->addNode(graph.getVertexSet()[i]->getInfo().getId(),
                     (int) (((graph.getVertexSet()[i]->getInfo().getX() - xmin) / (xmax - xmin)) * 4000 - 300),
