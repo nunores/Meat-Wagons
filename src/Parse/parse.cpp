@@ -93,33 +93,8 @@ void parseViseu(){
     parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", 374376834);
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
     parseTags("../Mapas/meat_wagon_tags_viseu.txt");
-    vector<Vertex<Point>*> temp_graph = graph.mybfs(374376834);
-    vector<Edge<Point>> edge_vector;
-    Graph<Point> empty_graph = Graph<Point>();
-    for (int i = 0; i < temp_graph.size(); i++)
-    {
-        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
-        {
-            Edge<Point> edge = Edge<Point>(temp_graph[i], temp_graph[i]->getAdj()[n].getDestPointer(), temp_graph[i]->getAdj()[n].getWeight());
-            edge_vector.push_back(edge);
-        }
-    }
-    for (int i = 0; i < temp_graph.size(); i++)
-    {
-        empty_graph.addVertex(temp_graph[i]->getInfo());
-        if (temp_graph[i]->getLocation())
-        {
-            empty_graph.findVertex(temp_graph[i]->getInfo())->setIsLocation(true);
-        }
-    }
-    for (int i = 0; i < temp_graph.size(); i++)
-    {
-        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
-        {
-            empty_graph.addEdge(temp_graph[i]->getInfo(), temp_graph[i]->getAdj()[n].getDest().getInfo(), temp_graph[i]->getAdj()[n].getWeight());
-        }
-    }
-    graph = empty_graph;
+
+    preProcessing(374376834);
 }
 
 void parsePorto(){
@@ -200,4 +175,34 @@ void parseEdges(const string& path_to_edges){
 
     }
 
+}
+
+void preProcessing(int source_ID){
+    vector<Vertex<Point>*> temp_graph = graph.mybfs(source_ID);
+    vector<Edge<Point>> edge_vector;
+    Graph<Point> empty_graph = Graph<Point>();
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
+        {
+            Edge<Point> edge = Edge<Point>(temp_graph[i], temp_graph[i]->getAdj()[n].getDestPointer(), temp_graph[i]->getAdj()[n].getWeight());
+            edge_vector.push_back(edge);
+        }
+    }
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        empty_graph.addVertex(temp_graph[i]->getInfo());
+        if (temp_graph[i]->getLocation())
+        {
+            empty_graph.findVertex(temp_graph[i]->getInfo())->setIsLocation(true);
+        }
+    }
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
+        {
+            empty_graph.addEdge(temp_graph[i]->getInfo(), temp_graph[i]->getAdj()[n].getDest().getInfo(), temp_graph[i]->getAdj()[n].getWeight());
+        }
+    }
+    graph = empty_graph;
 }

@@ -23,5 +23,7 @@ double getHighestY();
 void parsePorto();
 void parseCoimbra();
 
+void preProcessing(int source_ID);
+
 
 #endif //MEAT_WAGONS_PARSE_H
