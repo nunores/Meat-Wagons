@@ -22,8 +22,8 @@ void Prisoner::printPrisoner() {
     cout << nif << endl;
     cout << name << endl;
     cout << age << endl;
-    cout << destination << endl;
     cout << location << endl;
+    cout << destination << endl;
     cout << "::::::::::" << endl;
 }
 

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(Meat_Wagons)
 
 set(CMAKE_CXX_STANDARD 14)
-link_libraries(ws2_32 wsock32)
+#link_libraries(ws2_32 wsock32)
 
 include_directories(src/DataStructure)
 include_directories(src/GraphViewer)
@@ -24,4 +24,4 @@ add_executable(Meat_Wagons
         src/Misc/misc.h
         src/Prisoner/Prisoner.cpp
         src/Prisoner/Prisoner.h
-        src/main.cpp src/Parse/parse.cpp src/Parse/parse.h src/Point/point.cpp src/Point/point.h)
+        src/main.cpp src/Parse/parse.cpp src/Parse/parse.h src/Point/point.cpp src/Point/point.h src/Wagon/wagon.cpp src/Wagon/wagon.h)

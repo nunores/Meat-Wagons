@@ -88,6 +88,8 @@ double getHighestY()
     return y;
 }
 
+
+
 void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
     graph = Graph<Point>();
 
@@ -97,7 +99,8 @@ void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
 
     preProcessing(374376834);
     vector<int> prisioneiros;
-    int i = 0;
+    int i = -1;
+    bool peopleMoved = false;
 
 
     for (Prisoner prisoner : vector_prisoners)
@@ -107,8 +110,61 @@ void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
         {
             prisioneiros.push_back(prisoner.getLocation());
             vector_prisoners.at(i).setLocation(dest);
+            vector_prisoners.at(i).setDestination(-1);
+            peopleMoved = true;
         }
     }
+    vector<Point> point_vector;
+    vector<Point> final_point_vector;
+    int src = 374376834;
+    int index_remove;
+    int dist = INT_MAX;
+    int temp_dist = 0;
+    while (!prisioneiros.empty()) {
+        for (int i = 0; i < prisioneiros.size(); i++) {
+            temp_dist = 0;
+            graph.dijkstraShortestPath(src);
+            point_vector = graph.getPath(src, prisioneiros[i]);
+            for (int n = 0; n < point_vector.size(); n++) {
+                if (n != 0)
+                    temp_dist += sqrt(pow((point_vector[n].getX() - point_vector[n-1].getX()), 2) + pow((point_vector[n].getY() - point_vector[n-1].getY()), 2));
+                if (temp_dist < dist && n == point_vector.size() - 1) {
+                    dist = temp_dist;
+                    index_remove = i;
+                    final_point_vector = point_vector;
+                }
+            }
+        }
+        dist = INT_MAX;
+        src = prisioneiros[index_remove];
+        prisioneiros.erase(prisioneiros.begin()+index_remove);
+        for (int i = 0; i < final_point_vector.size(); i++)
+        {
+            graph.findVertex(final_point_vector[i].getId())->setYellow();
+        }
+    }
+    if (peopleMoved) {
+        graph.dijkstraShortestPath(src);
+        point_vector = graph.getPath(src, dest);
+        for (int i = 0; i < point_vector.size(); i++) {
+            graph.findVertex(point_vector[i].getId())->setYellow();
+        }
+    }
+}
+
+void parseViseu2(vector<Prisoner> &vector_prisoners){
+    graph = Graph<Point>();
+
+    parseNodes("../Mapas/PortugalMaps/Viseu/nodes_x_y_viseu.txt", 374376834);
+    parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
+    parseTags("../Mapas/meat_wagon_tags_viseu.txt", 4, 61);
+
+    preProcessing(374376834);
+    vector<int> prisioneiros;
+    int i = -1;
+    bool peopleMoved = false;
+
+    
 
     vector<Point> point_vector;
     vector<Point> final_point_vector;
@@ -139,14 +195,13 @@ void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
             graph.findVertex(final_point_vector[i].getId())->setYellow();
         }
     }
-    graph.dijkstraShortestPath(src);
-    point_vector = graph.getPath(src, dest);
-    for (int i = 0; i < point_vector.size(); i++)
-    {
-        graph.findVertex(point_vector[i].getId())->setYellow();
+    if (peopleMoved) {
+        graph.dijkstraShortestPath(src);
+        point_vector = graph.getPath(src, dest);
+        for (int i = 0; i < point_vector.size(); i++) {
+            graph.findVertex(point_vector[i].getId())->setYellow();
+        }
     }
-
-
 }
 
 void parsePorto(){
