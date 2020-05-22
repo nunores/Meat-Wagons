@@ -81,13 +81,13 @@ int showDestinationMenu()
     cout << "      Selecione um destino      " << endl;
     cout << "================================" << endl;
 
-    cout << "Destino: ";
-    string line;
-    int dest;
-    getline(cin, line);
-    dest = stoi(line);
+    //cout << "Destino: ";
+    //string line;
+    //int dest;
+    //getline(cin, line);
+    //dest = stoi(line);
     cout << "Carregando..." << endl;
-    parseViseu(dest, prisoners);
+    parseViseu2(prisoners); /////////////////////////////////////////////////////////////////////////////////////////////////////////TODO alterar
 
 
     GraphViewer *gc = createGraph();

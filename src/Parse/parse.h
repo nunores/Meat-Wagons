@@ -17,6 +17,7 @@ void parseEdges(const string& path_to_edges);
 void parseTags(const string& path_to_tags, int for_1, int for_2);
 
 void parseViseu(int dest, vector<Prisoner> &prisoners_vector);
+void parseViseu2(vector<Prisoner> &vector_prisoners);
 double getLowestX();
 double getHighestX();
 double getLowestY();
