@@ -99,7 +99,7 @@ vector<vector<Prisoner>> parsePrisoners(vector<Prisoner> & all_prisoners){
 
     for (int i = 0; i < all_prisoners.size(); i++) {
         temp_destination = all_prisoners.at(i).getDestination();
-        if(!isInDestinations(destinations, temp_destination)){
+        if(!isInDestinations(destinations, temp_destination) && temp_destination != -1){
             destinations.push_back(temp_destination);
             temp.push_back(all_prisoners.at(i));
             for (int n = i+1; n < all_prisoners.size(); ++n) {
