@@ -17,7 +17,15 @@ int showMainMenu();
 int choseOption(int options);
 int showTransportMenu();
 int showMapChoice();
-int showDestinationMenu();
+int showMapChoice2();
+int showDestinationMenuViseu();
+int showDestinationMenuPorto();
+int showDestinationMenuCoimbra();
+int showDestinationMenu2Viseu();
+int showDestinationMenu2Porto();
+int showDestinationMenu2Coimbra();
+
+
 
 #endif //MEAT_WAGONS_MENU_H
 

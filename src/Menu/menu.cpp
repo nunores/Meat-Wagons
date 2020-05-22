@@ -58,16 +58,13 @@ int showMapChoice() {
         case 0:
             return 0;
         case 1:
-            showDestinationMenu();
+            showDestinationMenuViseu();
             return 0;
         case 2:
-            cout << "Loading..." << endl;
-            parsePorto();
-
+            showDestinationMenuPorto();
             return 0;
         case 3:
-            cout << "Loading..." << endl;
-            parseCoimbra();
+            showDestinationMenuCoimbra();
             return 0;
         default:
             return -1;
@@ -75,19 +72,46 @@ int showMapChoice() {
     }
 }
 
-int showDestinationMenu()
+int showMapChoice2() {
+    cout << "================================" << endl;
+    cout << "              Mapas             " << endl;
+    cout << "================================" << endl;
+    cout << "1. Viseu" << endl;
+    cout << "2. Porto" << endl;
+    cout << "3. Coimbra" << endl;
+    cout << "0. Voltar" << endl;
+    int opt = choseOption(3);
+    switch(opt){
+        case 0:
+            return 0;
+        case 1:
+            showDestinationMenu2Viseu();
+            return 0;
+        case 2:
+            showDestinationMenu2Porto();
+            return 0;
+        case 3:
+            showDestinationMenu2Coimbra();
+            return 0;
+        default:
+            return -1;
+
+    }
+}
+
+int showDestinationMenuViseu()
 {
     cout << "================================" << endl;
     cout << "      Selecione um destino      " << endl;
     cout << "================================" << endl;
 
-    //cout << "Destino: ";
-    //string line;
-    //int dest;
-    //getline(cin, line);
-    //dest = stoi(line);
+    cout << "Destino: ";
+    string line;
+    int dest;
+    getline(cin, line);
+    dest = stoi(line);
     cout << "Carregando..." << endl;
-    parseViseu2(prisoners); /////////////////////////////////////////////////////////////////////////////////////////////////////////TODO alterar
+    parseViseu(dest, prisoners);
 
 
     GraphViewer *gc = createGraph();
@@ -102,6 +126,150 @@ int showDestinationMenu()
             break;
         }
     }
+
+    return 0;
+
+}
+
+int showDestinationMenuPorto()
+{
+    cout << "================================" << endl;
+    cout << "      Selecione um destino      " << endl;
+    cout << "================================" << endl;
+
+    cout << "Destino: ";
+    string line;
+    int dest;
+    getline(cin, line);
+    dest = stoi(line);
+    cout << "Carregando..." << endl;
+    parsePorto(dest, prisoners);
+
+
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cout << "Press q to exit!" << endl;
+        cin >> command;
+
+        if(command == "q"){
+            clearBuffer();
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int showDestinationMenuCoimbra()
+{
+    cout << "================================" << endl;
+    cout << "      Selecione um destino      " << endl;
+    cout << "================================" << endl;
+
+    cout << "Destino: ";
+    string line;
+    int dest;
+    getline(cin, line);
+    dest = stoi(line);
+    cout << "Carregando..." << endl;
+    parseCoimbra(dest, prisoners);
+
+
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cout << "Press q to exit!" << endl;
+        cin >> command;
+
+        if(command == "q"){
+            clearBuffer();
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int showDestinationMenu2Viseu()
+{
+    cout << "================================" << endl;
+    cout << "      Selecione um destino      " << endl;
+    cout << "================================" << endl;
+
+    cout << "Carregando..." << endl;
+    parseViseu2(prisoners);
+
+
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cout << "Press q to exit!" << endl;
+        cin >> command;
+
+        if(command == "q"){
+            clearBuffer();
+            break;
+        }
+    }
+
+    return 0;
+
+}
+
+int showDestinationMenu2Porto()
+{
+    cout << "================================" << endl;
+    cout << "      Selecione um destino      " << endl;
+    cout << "================================" << endl;
+
+    cout << "Carregando..." << endl;
+    parsePorto2(prisoners);
+
+
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cout << "Press q to exit!" << endl;
+        cin >> command;
+
+        if(command == "q"){
+            clearBuffer();
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int showDestinationMenu2Coimbra()
+{
+    cout << "================================" << endl;
+    cout << "      Selecione um destino      " << endl;
+    cout << "================================" << endl;
+
+    cout << "Carregando..." << endl;
+    parseCoimbra2(prisoners);
+
+
+    GraphViewer *gc = createGraph();
+
+    while(true){
+        string command;
+        cout << "Press q to exit!" << endl;
+        cin >> command;
+
+        if(command == "q"){
+            clearBuffer();
+            break;
+        }
+    }
+
+    return 0;
 
 }
 
@@ -122,11 +290,14 @@ int showTransportMenu()
                 if(showMapChoice() == 0)
                     break;
             }
-            //break;
+        case 2:
+            while(true){
+                if(showMapChoice2() == 0)
+                    break;
+            }
         default:
             return -1;
     }
-    return 0;
 }
 
 int choseOption(int options)
