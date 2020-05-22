@@ -30,10 +30,14 @@ double getHighestX();
 double getLowestY();
 double getHighestY();
 
-void preProcessing(int source_ID);
+void preProcessingViseu(int source_ID);
+void preProcessingPorto(int source_ID);
+void preProcessingCoimbra(int source_ID);
 
 bool isInDestinations(vector<int> &destinations, int destination);
-vector<vector<Prisoner>> parsePrisoners(vector<Prisoner> & all_prisoners);
+vector<vector<Prisoner>> parsePrisonersViseu(vector<Prisoner> & all_prisoners);
+vector<vector<Prisoner>> parsePrisonersPorto(vector<Prisoner> & all_prisoners);
+vector<vector<Prisoner>> parsePrisonersCoimbra(vector<Prisoner> & all_prisoners);
 
 
 

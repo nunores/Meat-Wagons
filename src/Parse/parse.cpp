@@ -2,6 +2,9 @@
 #include <climits>
 
 extern Graph<Point> graph;
+extern vector<int> viseu_tags;
+extern vector<int> porto_tags;
+extern vector<int> coimbra_tags;
 
 void parseNodes(const string& path_to_nodes, int source){
     string temp;
@@ -88,7 +91,7 @@ double getHighestY()
     return y;
 }
 
-vector<vector<Prisoner>> parsePrisoners(vector<Prisoner> & all_prisoners){
+vector<vector<Prisoner>> parsePrisonersViseu(vector<Prisoner> & all_prisoners){
     vector<vector<Prisoner>> res;
 
     vector<int> destinations;
@@ -99,7 +102,59 @@ vector<vector<Prisoner>> parsePrisoners(vector<Prisoner> & all_prisoners){
 
     for (int i = 0; i < all_prisoners.size(); i++) {
         temp_destination = all_prisoners.at(i).getDestination();
-        if(!isInDestinations(destinations, temp_destination) && temp_destination != -1){
+        if(!isInDestinations(destinations, temp_destination) && temp_destination != -1 && isInDestinations(viseu_tags, temp_destination)){
+            destinations.push_back(temp_destination);
+            temp.push_back(all_prisoners.at(i));
+            for (int n = i+1; n < all_prisoners.size(); ++n) {
+                if(all_prisoners.at(n).getDestination() == temp_destination)
+                    temp.push_back(all_prisoners.at(n));
+            }
+            res.push_back(temp);
+            temp.clear();
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Prisoner>> parsePrisonersPorto(vector<Prisoner> & all_prisoners){
+    vector<vector<Prisoner>> res;
+
+    vector<int> destinations;
+    int temp_destination;
+
+    vector<Prisoner> temp;
+
+
+    for (int i = 0; i < all_prisoners.size(); i++) {
+        temp_destination = all_prisoners.at(i).getDestination();
+        if(!isInDestinations(destinations, temp_destination) && temp_destination != -1 && isInDestinations(porto_tags, temp_destination)){
+            destinations.push_back(temp_destination);
+            temp.push_back(all_prisoners.at(i));
+            for (int n = i+1; n < all_prisoners.size(); ++n) {
+                if(all_prisoners.at(n).getDestination() == temp_destination)
+                    temp.push_back(all_prisoners.at(n));
+            }
+            res.push_back(temp);
+            temp.clear();
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Prisoner>> parsePrisonersCoimbra(vector<Prisoner> & all_prisoners){
+    vector<vector<Prisoner>> res;
+
+    vector<int> destinations;
+    int temp_destination;
+
+    vector<Prisoner> temp;
+
+
+    for (int i = 0; i < all_prisoners.size(); i++) {
+        temp_destination = all_prisoners.at(i).getDestination();
+        if(!isInDestinations(destinations, temp_destination) && temp_destination != -1 && isInDestinations(coimbra_tags, temp_destination)){
             destinations.push_back(temp_destination);
             temp.push_back(all_prisoners.at(i));
             for (int n = i+1; n < all_prisoners.size(); ++n) {
@@ -133,7 +188,7 @@ void parseViseu(int dest, vector<Prisoner> &vector_prisoners){
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
     parseTags("../Mapas/meat_wagon_tags_viseu.txt", 4, 61);
 
-    preProcessing(374376834);
+    preProcessingViseu(374376834);
     vector<int> prisioneiros;
     int i = -1;
     bool peopleMoved = false;
@@ -195,12 +250,12 @@ void parseViseu2(vector<Prisoner> &vector_prisoners){
     parseEdges("../Mapas/PortugalMaps/Viseu/edges_viseu.txt");
     parseTags("../Mapas/meat_wagon_tags_viseu.txt", 4, 61);
 
-    preProcessing(374376834);
+    preProcessingViseu(374376834);
     vector<int> prisioneiros;
     int i = -1;
     bool peopleMoved = false;
 
-    vector<vector<Prisoner>> all_prisoners = parsePrisoners(vector_prisoners);
+    vector<vector<Prisoner>> all_prisoners = parsePrisonersViseu(vector_prisoners);
 
     for ( int m = 0; m < all_prisoners.size(); m++) {
         i = -1;
@@ -269,7 +324,7 @@ void parsePorto(int dest, vector<Prisoner> &vector_prisoners){
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
     parseTags("../Mapas/meat_wagon_tags_porto.txt", 4, 101);
 
-    preProcessing(299610576);
+    preProcessingPorto(299610576);
 
     vector<int> prisioneiros;
     int i = -1;
@@ -331,12 +386,12 @@ void parsePorto2(vector<Prisoner> &vector_prisoners){
     parseEdges("../Mapas/PortugalMaps/Porto/edges_porto.txt");
     parseTags("../Mapas/meat_wagon_tags_porto.txt", 4, 101);
 
-    preProcessing(299610576);
+    preProcessingPorto(299610576);
     vector<int> prisioneiros;
     int i = -1;
     bool peopleMoved = false;
 
-    vector<vector<Prisoner>> all_prisoners = parsePrisoners(vector_prisoners);
+    vector<vector<Prisoner>> all_prisoners = parsePrisonersPorto(vector_prisoners);
 
     for ( int m = 0; m < all_prisoners.size(); m++) {
         i = -1;
@@ -407,7 +462,7 @@ void parseCoimbra(int dest, vector<Prisoner> &vector_prisoners){
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
     parseTags("../Mapas/meat_wagon_tags_coimbra.txt", 4, 212);
 
-    preProcessing(1104700202);
+    preProcessingCoimbra(1104700202);
 
     vector<int> prisioneiros;
     int i = -1;
@@ -471,12 +526,12 @@ void parseCoimbra2(vector<Prisoner> &vector_prisoners){
     parseEdges("../Mapas/PortugalMaps/Coimbra/edges_coimbra.txt");
     parseTags("../Mapas/meat_wagon_tags_coimbra.txt", 4, 212);
 
-    preProcessing(1104700202);
+    preProcessingCoimbra(1104700202);
     vector<int> prisioneiros;
     int i = -1;
     bool peopleMoved = false;
 
-    vector<vector<Prisoner>> all_prisoners = parsePrisoners(vector_prisoners);
+    vector<vector<Prisoner>> all_prisoners = parsePrisonersCoimbra(vector_prisoners);
 
     for ( int m = 0; m < all_prisoners.size(); m++) {
         i = -1;
@@ -600,7 +655,7 @@ void parseEdges(const string& path_to_edges){
 
 }
 
-void preProcessing(int source_ID){
+void preProcessingViseu(int source_ID){
     vector<Vertex<Point>*> temp_graph = graph.mybfs(source_ID);
     vector<Edge<Point>> edge_vector;
     Graph<Point> empty_graph = Graph<Point>();
@@ -628,4 +683,85 @@ void preProcessing(int source_ID){
         }
     }
     graph = empty_graph;
+    for (int i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getLocation())
+        {
+            viseu_tags.push_back(graph.getVertexSet()[i]->getInfo().getId());
+        }
+    }
+}
+
+void preProcessingPorto(int source_ID){
+    vector<Vertex<Point>*> temp_graph = graph.mybfs(source_ID);
+    vector<Edge<Point>> edge_vector;
+    Graph<Point> empty_graph = Graph<Point>();
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
+        {
+            Edge<Point> edge = Edge<Point>(temp_graph[i], temp_graph[i]->getAdj()[n].getDestPointer(), temp_graph[i]->getAdj()[n].getWeight());
+            edge_vector.push_back(edge);
+        }
+    }
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        empty_graph.addVertex(temp_graph[i]->getInfo());
+        if (temp_graph[i]->getLocation())
+        {
+            empty_graph.findVertex(temp_graph[i]->getInfo())->setIsLocation(true);
+        }
+    }
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
+        {
+            empty_graph.addEdge(temp_graph[i]->getInfo(), temp_graph[i]->getAdj()[n].getDest().getInfo(), temp_graph[i]->getAdj()[n].getWeight());
+        }
+    }
+    graph = empty_graph;
+    for (int i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getLocation())
+        {
+            porto_tags.push_back(graph.getVertexSet()[i]->getInfo().getId());
+        }
+    }
+}
+
+void preProcessingCoimbra(int source_ID){
+    vector<Vertex<Point>*> temp_graph = graph.mybfs(source_ID);
+    vector<Edge<Point>> edge_vector;
+    Graph<Point> empty_graph = Graph<Point>();
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
+        {
+            Edge<Point> edge = Edge<Point>(temp_graph[i], temp_graph[i]->getAdj()[n].getDestPointer(), temp_graph[i]->getAdj()[n].getWeight());
+            edge_vector.push_back(edge);
+        }
+    }
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        empty_graph.addVertex(temp_graph[i]->getInfo());
+        if (temp_graph[i]->getLocation())
+        {
+            empty_graph.findVertex(temp_graph[i]->getInfo())->setIsLocation(true);
+        }
+    }
+    for (int i = 0; i < temp_graph.size(); i++)
+    {
+        for (int n = 0; n < temp_graph[i]->getAdj().size(); n++)
+        {
+            empty_graph.addEdge(temp_graph[i]->getInfo(), temp_graph[i]->getAdj()[n].getDest().getInfo(), temp_graph[i]->getAdj()[n].getWeight());
+        }
+    }
+    graph = empty_graph;
+    for (int i = 0; i < graph.getNumVertex(); i++)
+    {
+        if (graph.getVertexSet()[i]->getLocation())
+        {
+            coimbra_tags.push_back(graph.getVertexSet()[i]->getInfo().getId());
+        }
+    }
 }

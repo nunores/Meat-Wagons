@@ -7,6 +7,9 @@ using namespace std;
 
 Graph<Point> graph;
 vector<Prisoner> prisoners;
+vector<int> viseu_tags;
+vector<int> porto_tags;
+vector<int> coimbra_tags;
 
 int main() {
 
