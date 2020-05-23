@@ -9,34 +9,25 @@ using namespace std;
 
 class Wagon {
 private:
-    int id;
-    int capacity;
-    double cost_per_dist;
-    int ocupation;
-    int average_speed;
-    int dist = 0;
-
+    int dest;
 public:
-    Wagon(int id, int capacity, double costPerDist, int ocupation, int averageSpeed);
+    static int capacity;
+    static double cost_per_dist;
+    int ocupation = 0;
+    static double average_speed;
+    double dist = 0;
 
-    void setCapacity(int capacity);
-
-    void setCostPerDist(double costPerDist);
+    Wagon(int dest);
 
     void setOcupation(int ocupation);
 
-    void setAverageSpeed(int averageSpeed);
-
-    int getId() const;
-
-    int getCapacity() const;
-
-    double getCostPerDist() const;
+    void setDist(double dist);
 
     int getOcupation() const;
 
-    int getAverageSpeed() const;
+    double getDist() const;
 
+    int getDest() const;
 };
 
 #endif //MEAT_WAGONS_WAGON_H

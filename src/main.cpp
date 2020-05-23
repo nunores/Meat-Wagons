@@ -2,6 +2,7 @@
 #include "Menu/menu.h"
 #include "Graph.h"
 #include "Parse/parse.h"
+#include "Wagon/wagon.h"
 
 using namespace std;
 
@@ -10,6 +11,7 @@ vector<Prisoner> prisoners;
 vector<int> viseu_tags;
 vector<int> porto_tags;
 vector<int> coimbra_tags;
+vector<Wagon> wagons;
 
 int main() {
 
@@ -21,7 +23,14 @@ int main() {
             break;
     }
 
-    Prisoner::savePrisoners(prisoners);
+    for (Wagon wagon: wagons)
+    {
+        cout << wagon.getDest() << endl;
+        cout << wagon.getDist() << endl;
+        cout << "#######" << endl;
+    }
+
+    //Prisoner::savePrisoners(prisoners);
 
 
     return 0;
