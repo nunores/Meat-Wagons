@@ -18,12 +18,16 @@ int choseOption(int options);
 int showTransportMenu();
 int showMapChoice();
 int showMapChoice2();
+int showMapChoice3();
 int showDestinationMenuViseu();
 int showDestinationMenuPorto();
 int showDestinationMenuCoimbra();
 int showDestinationMenu2Viseu();
 int showDestinationMenu2Porto();
 int showDestinationMenu2Coimbra();
+int showDestinationMenu3Viseu();
+int showDestinationMenu3Porto();
+int showDestinationMenu3Coimbra();
 
 
 

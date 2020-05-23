@@ -18,10 +18,15 @@ void parseTags(const string& path_to_tags, int for_1, int for_2);
 
 void parseViseu(int dest, vector<Prisoner> &vector_prisoners);
 void parseViseu2(vector<Prisoner> &vector_prisoners);
+void parseViseu3(vector<Prisoner> &vector_prisoners);
+
 void parsePorto(int dest, vector<Prisoner> &vector_prisoners);
 void parsePorto2(vector<Prisoner> &vector_prisoners);
+void parsePorto3(vector<Prisoner> &vector_prisoners);
+
 void parseCoimbra(int dest, vector<Prisoner> &vector_prisoners);
 void parseCoimbra2(vector<Prisoner> &vector_prisoners);
+void parseCoimbra3(vector<Prisoner> &vector_prisoners);
 
 
 
