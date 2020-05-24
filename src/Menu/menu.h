@@ -14,6 +14,10 @@
 using namespace std;
 
 int showMainMenu();
+int showWagonInfo();
+int showSetWagonInfo();
+int showCompleteMapsMenu();
+int showTransportInfo();
 int choseOption(int options);
 int showTransportMenu();
 int showMapChoice();

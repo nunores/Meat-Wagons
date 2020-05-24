@@ -5,7 +5,7 @@ Wagon::Wagon(int dest) {
     this->dest = dest;
 }
 
-int Wagon::capacity = 3;
+int Wagon::capacity = 2;
 double Wagon::cost_per_dist = 1.2;
 double Wagon::average_speed = 13.8;
 

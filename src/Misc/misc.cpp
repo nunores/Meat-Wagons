@@ -44,9 +44,8 @@ void enter_to_exit()
 {
 	do
 	{
-		cout << '\n' << "Press enter to continue...";
+		cout << '\n' << "Pressione Enter para continuar...";
 	} while (cin.get() != '\n');
-	clearScreen();
 }
 
 bool strIsChar(string str) {

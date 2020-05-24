@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void parseNodes(const string& path_to_nodes);
+void parseNodes(const string& path_to_nodes, int source);
 void parseEdges(const string& path_to_edges);
 void parseTags(const string& path_to_tags, int for_1, int for_2);
 
@@ -41,8 +41,11 @@ void preProcessingCoimbra(int source_ID);
 
 bool isInDestinations(vector<int> &destinations, int destination);
 vector<vector<Prisoner>> parsePrisonersViseu(vector<Prisoner> & all_prisoners);
+vector<vector<Prisoner>> parsePrisonersViseu3(vector<Prisoner> & all_prisoners, int capacity);
 vector<vector<Prisoner>> parsePrisonersPorto(vector<Prisoner> & all_prisoners);
+vector<vector<Prisoner>> parsePrisonersPorto3(vector<Prisoner> & all_prisoners, int capacity);
 vector<vector<Prisoner>> parsePrisonersCoimbra(vector<Prisoner> & all_prisoners);
+vector<vector<Prisoner>> parsePrisonersCoimbra3(vector<Prisoner> & all_prisoners, int capacity);
 
 
 
