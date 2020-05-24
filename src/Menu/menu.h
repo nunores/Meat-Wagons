@@ -18,6 +18,7 @@ int showWagonInfo();
 int showSetWagonInfo();
 int showCompleteMapsMenu();
 int showTransportInfo();
+int saveMenu();
 int choseOption(int options);
 int showTransportMenu();
 int showMapChoice();

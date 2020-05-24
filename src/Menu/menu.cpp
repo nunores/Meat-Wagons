@@ -576,6 +576,20 @@ int showTransportMenu()
     }
 }
 
+int saveMenu()
+{
+    cout << "================================" << endl;
+    cout << "  Deseja guardar as alteracoes? " << endl;
+    cout << "================================" << endl;
+    cout << "1. Sim" << endl;
+    cout << "0. Nao" << endl;
+    int opt = choseOption(1);
+    switch(opt){
+        case 0: return 0;
+        case 1: return 1;
+    }
+}
+
 int choseOption(int options)
 {
     bool error;
